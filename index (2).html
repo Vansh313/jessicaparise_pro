@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jessica Parise — Chanteuse & Coach Vocal | Marseille · Paris</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --stage-black:#15100E;
+    --bordeaux:#5C1420;
+    --gold:#C89B4A;
+    --gold-soft:#E4C88A;
+    --cream:#F3EBDD;
+    --rose:#B4574A;
+    --charcoal:#2B211D;
+    --line: rgba(243,235,221,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--charcoal);
+    background:var(--cream);
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+
+  .eyebrow{
+    font-family:'Inter',sans-serif;
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--gold);
+  }
+  h1,h2,h3{
+    font-family:'Bodoni Moda', serif;
+    font-weight:600;
+    line-height:1.05;
+  }
+  .serif-italic{font-style:italic; font-weight:500;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 5vw;
+    background:linear-gradient(to bottom, rgba(21,16,14,0.85), transparent);
+    transition:background .3s ease;
+  }
+  header.scrolled{
+    background:rgba(21,16,14,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .logo{
+    font-family:'Bodoni Moda', serif;
+    font-size:1.15rem;
+    letter-spacing:0.08em;
+    color:var(--cream);
+  }
+  .logo span{color:var(--gold);}
+  nav ul{
+    display:flex; gap:2.2rem; list-style:none;
+  }
+  nav a{
+    color:var(--cream); font-size:0.85rem; letter-spacing:0.03em;
+    padding-bottom:4px; border-bottom:1px solid transparent;
+    transition:border-color .25s, opacity .25s;
+  }
+  nav a:hover{border-color:var(--gold); opacity:0.9;}
+  .nav-cta{
+    display:inline-block;
+    background:var(--gold);
+    color:var(--stage-black) !important;
+    padding:10px 20px;
+    border-radius:2px;
+    font-size:0.8rem;
+    letter-spacing:0.04em;
+    font-weight:600;
+  }
+  .nav-cta:hover{background:var(--gold-soft);}
+  .nav-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-end;
+    background:var(--stage-black);
+    overflow:hidden;
+  }
+  .hero-photo{
+    position:absolute; inset:0;
+    background-image:url('images/stage-pink-gown-lights.jpg');
+    background-size:cover;
+    background-position:center 20%;
+    opacity:0.55;
+    transform:scale(1.02);
+  }
+  .hero-scrim{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(21,16,14,0.55) 0%, rgba(21,16,14,0.35) 35%, rgba(21,16,14,0.97) 92%);
+  }
+  .beams{
+    position:absolute; top:-10%; left:50%; transform:translateX(-50%);
+    width:140vw; max-width:1900px; opacity:0.5;
+    pointer-events:none;
+  }
+  @keyframes sway{
+    0%,100%{ transform:translateX(-50%) rotate(-0.6deg); }
+    50%{ transform:translateX(-50%) rotate(0.6deg); }
+  }
+  .beams{ animation:sway 14s ease-in-out infinite; transform-origin: top center; }
+  @media (prefers-reduced-motion:reduce){ .beams{ animation:none; } }
+
+  .hero-content{
+    position:relative; z-index:2;
+    padding:0 6vw 6.5vw;
+    max-width:920px;
+  }
+  .hero-content .eyebrow{margin-bottom:1.1rem; display:block;}
+  .hero h1{
+    color:var(--cream);
+    font-size:clamp(2.6rem, 6vw, 5.2rem);
+    margin-bottom:1.3rem;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold-soft);
+  }
+  .hero p.lede{
+    color:var(--cream);
+    opacity:0.82;
+    font-size:1.08rem;
+    max-width:520px;
+    line-height:1.6;
+    margin-bottom:2.2rem;
+  }
+  .cta-row{display:flex; gap:1rem; flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:14px 28px;
+    font-size:0.85rem;
+    letter-spacing:0.03em;
+    font-weight:600;
+    border-radius:2px;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--gold); color:var(--stage-black);}
+  .btn-primary:hover{background:var(--gold-soft);}
+  .btn-outline{
+    border:1px solid rgba(243,235,221,0.5); color:var(--cream);
+  }
+  .btn-outline:hover{border-color:var(--gold); color:var(--gold-soft);}
+
+  .scroll-cue{
+    position:absolute; bottom:28px; right:6vw; z-index:2;
+    color:var(--cream); opacity:0.55; font-size:0.7rem;
+    letter-spacing:0.2em; text-transform:uppercase;
+    display:flex; align-items:center; gap:10px;
+  }
+  .scroll-cue::after{
+    content:''; width:1px; height:34px; background:var(--gold);
+    display:block;
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:7.5rem 6vw;}
+  .section-dark{background:var(--stage-black); color:var(--cream); position:relative;}
+  .section-dark::before{
+    content:'';
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(1px 1px at 10% 20%, rgba(228,200,138,0.5) 0, transparent 60%),
+      radial-gradient(1px 1px at 80% 10%, rgba(228,200,138,0.4) 0, transparent 60%),
+      radial-gradient(1px 1px at 60% 70%, rgba(228,200,138,0.35) 0, transparent 60%),
+      radial-gradient(1px 1px at 30% 85%, rgba(228,200,138,0.4) 0, transparent 60%),
+      radial-gradient(1px 1px at 92% 55%, rgba(228,200,138,0.35) 0, transparent 60%);
+    pointer-events:none;
+  }
+  .section-inner{position:relative; z-index:1;}
+  .kicker{margin-bottom:0.9rem;}
+  .section-title{font-size:clamp(2rem, 3.6vw, 3rem); margin-bottom:1.6rem;}
+  .section-dark .section-title{color:var(--cream);}
+
+  /* ---------- A PROPOS ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:5vw; align-items:center;
+  }
+  .about-photo{
+    position:relative;
+  }
+  .about-photo img{
+    width:100%; aspect-ratio:4/5; object-fit:cover;
+    filter:saturate(0.95);
+  }
+  .about-photo::before{
+    content:''; position:absolute; top:-14px; left:-14px; right:14px; bottom:14px;
+    border:1px solid var(--gold); z-index:-1;
+  }
+  .about-text p{
+    font-size:1.02rem; line-height:1.75; color:rgba(243,235,221,0.85);
+    margin-bottom:1.2rem; max-width:560px;
+  }
+  .about-text p:first-of-type{
+    font-size:1.2rem; color:var(--cream);
+  }
+  .stats{
+    display:flex; gap:2.6rem; margin-top:2.4rem; flex-wrap:wrap;
+  }
+  .stat b{
+    display:block; font-family:'Bodoni Moda', serif; font-size:1.9rem; color:var(--gold-soft);
+  }
+  .stat span{font-size:0.78rem; letter-spacing:0.04em; opacity:0.7;}
+
+  /* ---------- SERVICES ---------- */
+  .section-light{background:var(--cream);}
+  .services-head{max-width:640px; margin-bottom:3.5rem;}
+  .services-head .eyebrow{color:var(--bordeaux);}
+  .services-head .section-title{color:var(--charcoal);}
+  .services-head p{font-size:1.05rem; line-height:1.65; color:#4a3d36;}
+
+  .services-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:2.2rem;
+  }
+  .service-card{
+    background:var(--stage-black);
+    color:var(--cream);
+    position:relative;
+    overflow:hidden;
+  }
+  .service-photo{
+    height:280px; overflow:hidden; position:relative;
+  }
+  .service-photo img{
+    width:100%; height:100%; object-fit:cover;
+    transition:transform .5s ease;
+  }
+  .service-card:hover .service-photo img{transform:scale(1.06);}
+  .service-photo::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg, transparent 40%, rgba(21,16,14,0.9) 100%);
+  }
+  .service-body{padding:1.8rem 1.7rem 2.2rem;}
+  .service-tag{
+    font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:0.7rem; display:block;
+  }
+  .service-body h3{
+    font-size:1.35rem; margin-bottom:0.8rem; color:var(--cream);
+  }
+  .service-body p{
+    font-size:0.92rem; line-height:1.6; color:rgba(243,235,221,0.75);
+    margin-bottom:1.2rem;
+  }
+  .service-link{
+    font-size:0.8rem; color:var(--gold-soft); letter-spacing:0.02em;
+    border-bottom:1px solid rgba(228,200,138,0.4);
+    padding-bottom:3px;
+  }
+  .service-link:hover{border-color:var(--gold-soft);}
+
+  /* ---------- GALLERY ---------- */
+  .gallery-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    margin-bottom:2.5rem; flex-wrap:wrap; gap:1rem;
+  }
+  .gallery-head .section-title{margin-bottom:0.4rem; color:var(--cream);}
+  .gallery-head p{color:rgba(243,235,221,0.65); font-size:0.95rem; max-width:420px;}
+  .gallery-link{
+    font-size:0.82rem; color:var(--gold-soft);
+    border-bottom:1px solid rgba(228,200,138,0.4); padding-bottom:3px; white-space:nowrap;
+  }
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap:14px;
+    height:640px;
+  }
+  .g-item{overflow:hidden; position:relative;}
+  .g-item img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .g-item:hover img{transform:scale(1.07);}
+  .g-item.tall{grid-row:span 2;}
+  .g-cap{
+    position:absolute; bottom:0; left:0; right:0;
+    padding:14px 16px;
+    background:linear-gradient(180deg, transparent, rgba(21,16,14,0.85));
+    font-size:0.78rem; letter-spacing:0.02em; color:var(--cream);
+    opacity:0; transition:opacity .3s ease;
+  }
+  .g-item:hover .g-cap{opacity:1;}
+
+  /* ---------- REPERTOIRE ---------- */
+  .repertoire{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:5vw; align-items:start;
+  }
+  .repertoire-intro .section-title{color:var(--charcoal);}
+  .repertoire-intro p{color:#4a3d36; line-height:1.7; margin-bottom:1.8rem; max-width:460px;}
+  .track-list{list-style:none;}
+  .track{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.1rem 0; border-bottom:1px solid rgba(43,33,29,0.15);
+  }
+  .track-name{font-family:'Bodoni Moda', serif; font-size:1.15rem;}
+  .track-name span{
+    display:block; font-family:'Inter',sans-serif; font-size:0.75rem;
+    letter-spacing:0.05em; color:#8a7a6d; margin-top:2px; font-style:normal;
+  }
+  .track-note{font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--bordeaux);}
+
+  /* ---------- TEMOIGNAGES ---------- */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem;}
+  .testi-card{
+    border:1px dashed rgba(243,235,221,0.3);
+    padding:2.2rem 1.8rem;
+    min-height:220px;
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .testi-card .quote-mark{font-family:'Bodoni Moda', serif; font-size:2.6rem; color:var(--gold); line-height:1;}
+  .testi-card p{
+    font-size:0.85rem; letter-spacing:0.03em; color:rgba(243,235,221,0.5);
+    font-style:italic; margin-top:1rem;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact-wrap{
+    display:grid; grid-template-columns:1fr 1fr; gap:5vw; align-items:center;
+  }
+  .contact-left .section-title{color:var(--cream); margin-bottom:1.2rem;}
+  .contact-left p{color:rgba(243,235,221,0.75); line-height:1.7; margin-bottom:2rem; max-width:460px;}
+  .contact-cards{display:flex; flex-direction:column; gap:1rem;}
+  .contact-card{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:1.4rem 1.6rem; border:1px solid var(--line);
+    transition:border-color .2s ease, background .2s ease;
+  }
+  .contact-card:hover{border-color:var(--gold); background:rgba(228,200,138,0.04);}
+  .contact-card b{font-family:'Bodoni Moda', serif; font-size:1.05rem; display:block; margin-bottom:2px;}
+  .contact-card span{font-size:0.8rem; color:rgba(243,235,221,0.6);}
+  .contact-card .arrow{color:var(--gold); font-size:1.2rem;}
+
+  .contact-right{
+    position:relative; aspect-ratio:4/5; overflow:hidden;
+  }
+  .contact-right img{width:100%; height:100%; object-fit:cover;}
+
+  footer{
+    background:var(--stage-black); color:rgba(243,235,221,0.55);
+    padding:2.4rem 6vw; display:flex; justify-content:space-between; align-items:center;
+    border-top:1px solid var(--line); font-size:0.8rem; flex-wrap:wrap; gap:1rem;
+  }
+  footer a:hover{color:var(--gold-soft);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px){
+    nav ul, .nav-cta{display:none;}
+    .about-grid, .repertoire, .contact-wrap{grid-template-columns:1fr;}
+    .services-grid, .testi-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:1fr 1fr; grid-template-rows:repeat(3,220px); height:auto;}
+    .g-item.tall{grid-row:span 1;}
+    .about-photo{max-width:340px; margin:0 auto;}
+    section{padding:5rem 6vw;}
+    .contact-right{order:-1; aspect-ratio:16/10;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="logo">JESSICA <span>PARISE</span></div>
+  <nav>
+    <ul>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#univers">L'univers</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#repertoire">Répertoire</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <a href="#contact" class="nav-cta">Réserver</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-scrim"></div>
+  <svg class="beams" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="beamGold" cx="50%" cy="0%" r="80%">
+        <stop offset="0%" stop-color="#E4C88A" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="#E4C88A" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="beamRose" cx="50%" cy="0%" r="80%">
+        <stop offset="0%" stop-color="#B4574A" stop-opacity="0.28"/>
+        <stop offset="100%" stop-color="#B4574A" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <polygon points="480,0 300,900 660,900" fill="url(#beamGold)"/>
+    <polygon points="800,0 620,900 980,900" fill="url(#beamRose)"/>
+    <polygon points="1120,0 940,900 1300,900" fill="url(#beamGold)"/>
+    <circle cx="480" cy="6" r="5" fill="#E4C88A"/>
+    <circle cx="800" cy="6" r="5" fill="#E4C88A"/>
+    <circle cx="1120" cy="6" r="5" fill="#E4C88A"/>
+  </svg>
+
+  <div class="hero-content">
+    <span class="eyebrow">Chanteuse &amp; Coach Vocal — Marseille · Paris</span>
+    <h1>Une voix de scène,<br><em>au service de vos plus beaux instants.</em></h1>
+    <p class="lede">Des cabarets de la Côte d'Azur aux plus belles salles de mariage, Jessica Parise met vingt ans de scène au service de vos événements — et de votre propre voix.</p>
+    <div class="cta-row">
+      <a href="#contact" class="btn btn-primary">Demander un devis mariage</a>
+      <a href="https://calendly.com/jessicaparise-coaching/nouvelle-reunion" target="_blank" class="btn btn-outline">Réserver un coaching</a>
+    </div>
+  </div>
+  <div class="scroll-cue">Découvrir</div>
+</section>
+
+<!-- A PROPOS -->
+<section class="section-dark" id="apropos">
+  <div class="section-inner about-grid">
+    <div class="about-photo">
+      <img src="images/backstage-candid.jpg" alt="Jessica Parise en coulisses, avant un spectacle">
+    </div>
+    <div class="about-text">
+      <span class="eyebrow kicker">À propos</span>
+      <p>Avant chaque entrée en scène, il y a ce même instant de silence — puis les lumières, et la voix qui prend le relais.</p>
+      <p>Jessica Parise est chanteuse professionnelle, formée au chant lyrique et à la variété. Elle se produit depuis plusieurs années sur les scènes de cabaret et de revue, aux côtés de danseurs et d'orchestres, où elle interprète aussi bien Piaf que Nat King Cole ou les grands standards de Disney.</p>
+      <p>Aujourd'hui, elle met cette expérience de la scène au service de deux passions : accompagner en musique les plus beaux jours de celles et ceux qui l'invitent — mariages, soirées privées, événements d'entreprise — et transmettre, en coaching individuel, tout ce que vingt ans de scène lui ont appris sur la voix, le souffle et la confiance.</p>
+      <div class="stats">
+        <div class="stat"><b>Cabaret</b><span>Revues &amp; spectacles</span></div>
+        <div class="stat"><b>Mariages</b><span>Marseille · Paris · France</span></div>
+        <div class="stat"><b>Coaching</b><span>Tous niveaux, présentiel &amp; visio</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES / UNIVERS -->
+<section class="section-light" id="univers">
+  <div class="section-inner">
+    <div class="services-head">
+      <span class="eyebrow kicker">L'univers</span>
+      <h2 class="section-title">Trois scènes, une même voix.</h2>
+      <p>Que ce soit devant un orchestre, un couple de mariés ou un élève qui découvre sa propre voix, Jessica adapte sa présence à chaque scène — sans jamais en perdre l'intensité.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-photo"><img src="images/portrait-red-gown.jpg" alt="Jessica Parise pour un mariage"></div>
+        <div class="service-body">
+          <span class="service-tag">Mariages &amp; Événements</span>
+          <h3>Mariages &amp; Événements</h3>
+          <p>Cérémonie, cocktail, dîner ou ouverture de bal : un répertoire sur-mesure pour accompagner chaque étape de votre journée, en solo ou avec musiciens.</p>
+          <a href="#contact" class="service-link">Demander un devis →</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-photo"><img src="images/closeup-mic-purple.jpg" alt="Séance de coaching vocal avec Jessica Parise"></div>
+        <div class="service-body">
+          <span class="service-tag">Coaching Vocal</span>
+          <h3>Coaching Vocal</h3>
+          <p>Respiration, justesse, placement, interprétation : des séances personnalisées pour progresser à votre rythme, du premier cours à la scène.</p>
+          <a href="https://calendly.com/jessicaparise-coaching/nouvelle-reunion" target="_blank" class="service-link">Réserver une séance →</a>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-photo"><img src="images/cabaret-feathers-group.jpg" alt="Spectacle de cabaret avec Jessica Parise"></div>
+        <div class="service-body">
+          <span class="service-tag">Concerts &amp; Spectacles</span>
+          <h3>Concerts &amp; Spectacles</h3>
+          <p>Numéros de revue, concerts privés, soirées à thème : une présence scénique forgée sur les grandes scènes de cabaret et de variété.</p>
+          <a href="#contact" class="service-link">En discuter →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+<section class="section-dark" id="galerie">
+  <div class="section-inner">
+    <div class="gallery-head">
+      <div>
+        <span class="eyebrow kicker">Galerie</span>
+        <h2 class="section-title">Sur scène, en coulisses.</h2>
+        <p>Quelques instants pris sur le vif — entre cabaret, mariages et petites folies personnelles.</p>
+      </div>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-item tall">
+        <img src="images/closeup-red-feathers.jpg" alt="Jessica Parise, gros plan sur scène avec plumes">
+        <div class="g-cap">Numéro de cabaret — plumes &amp; paillettes</div>
+      </div>
+      <div class="g-item">
+        <img src="images/stage-gold-dress.jpg" alt="Jessica Parise en pleine interprétation">
+        <div class="g-cap">Concert privé — interprétation</div>
+      </div>
+      <div class="g-item">
+        <img src="images/christmas-cover.jpg" alt="Jessica Parise, reprise de Noël, clin d'œil à La Belle et la Bête">
+        <div class="g-cap">Reprise de Noël — clin d'œil Disney</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPERTOIRE -->
+<section class="section-light" id="repertoire">
+  <div class="section-inner repertoire">
+    <div class="repertoire-intro">
+      <span class="eyebrow kicker" style="color:var(--bordeaux);">Répertoire</span>
+      <h2 class="section-title">Un répertoire qui traverse les époques.</h2>
+      <p>De la chanson française aux standards internationaux, un choix de reprises pensé pour s'adapter à chaque ambiance — cérémonie, cocktail ou piste de danse.</p>
+      <a href="https://linktr.ee/jessicaparise_pro" target="_blank" class="btn btn-outline" style="border-color:var(--charcoal); color:var(--charcoal);">Écouter toutes les reprises</a>
+    </div>
+    <ul class="track-list">
+      <li class="track">
+        <div class="track-name">You Say<span>Lauren Daigle</span></div>
+        <span class="track-note">Cérémonie</span>
+      </li>
+      <li class="track">
+        <div class="track-name">Mon Dieu<span>Édith Piaf</span></div>
+        <span class="track-note">Chanson française</span>
+      </li>
+      <li class="track">
+        <div class="track-name">L.O.V.E<span>Nat King Cole</span></div>
+        <span class="track-note">Cocktail</span>
+      </li>
+      <li class="track">
+        <div class="track-name">C'est la fête<span>La Belle et la Bête</span></div>
+        <span class="track-note">Reprise Disney</span>
+      </li>
+      <li class="track">
+        <div class="track-name">I Put a Spell on You<span>Standard jazz</span></div>
+        <span class="track-note">Piste de danse</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- TEMOIGNAGES -->
+<section class="section-dark" id="temoignages">
+  <div class="section-inner">
+    <span class="eyebrow kicker">Témoignages</span>
+    <h2 class="section-title">Ils lui ont fait confiance.</h2>
+    <div class="testi-grid" style="margin-top:2.5rem;">
+      <div class="testi-card">
+        <div class="quote-mark">”</div>
+        <p>Emplacement réservé pour un avis client — mariage ou événement.</p>
+      </div>
+      <div class="testi-card">
+        <div class="quote-mark">”</div>
+        <p>Emplacement réservé pour un avis d'élève en coaching vocal.</p>
+      </div>
+      <div class="testi-card">
+        <div class="quote-mark">”</div>
+        <p>Emplacement réservé pour un avis lié à un concert ou spectacle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section-dark" id="contact">
+  <div class="section-inner contact-wrap">
+    <div class="contact-left">
+      <span class="eyebrow kicker">Contact</span>
+      <h2 class="section-title">Parlons de votre projet.</h2>
+      <p>Mariage, événement privé ou envie de progresser en chant : dites-moi où vous en êtes, je reviens vers vous rapidement.</p>
+      <div class="contact-cards">
+        <a href="https://calendly.com/jessicaparise-coaching/nouvelle-reunion" target="_blank" class="contact-card">
+          <div><b>Réserver un coaching</b><span>Créneau immédiat via Calendly</span></div>
+          <span class="arrow">→</span>
+        </a>
+        <a href="https://www.instagram.com/jessicaparise_pro/" target="_blank" class="contact-card">
+          <div><b>Écrire sur Instagram</b><span>@jessicaparise_pro</span></div>
+          <span class="arrow">→</span>
+        </a>
+        <a href="#" class="contact-card">
+          <div><b>Devis mariage &amp; événement</b><span>Réponse sous 48h</span></div>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+    <div class="contact-right">
+      <img src="images/stage-pink-gown-lights.jpg" alt="Jessica Parise en concert">
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© <span id="year"></span> Jessica Parise — Tous droits réservés</div>
+  <div><a href="https://www.instagram.com/jessicaparise_pro/" target="_blank">Instagram</a> · <a href="https://linktr.ee/jessicaparise_pro" target="_blank">Linktree</a></div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 40){ header.classList.add('scrolled'); }
+    else{ header.classList.remove('scrolled'); }
+  });
+</script>
+
+</body>
+</html>
